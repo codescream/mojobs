@@ -12,7 +12,7 @@ import { icons, SIZES } from '../../../constants';
 
 import styles from './welcome.style';
 
-const jobTypes = ["Full-time", "Part-time", "Contractor"];
+const jobTypes = ["Full-time", "Part-time", "Contractor", "Others"]
 
 const Welcome = () => {
   const router = useRouter();
@@ -66,7 +66,7 @@ const Welcome = () => {
             </TouchableOpacity>
           )}
           keyExtractor={item => item}
-          contentContainerStyle={{ columnGap: SIZES.small, alignItems: 'center' }}
+          contentContainerStyle={{ columnGap: SIZES.small, alignItems: 'center', paddingVertical: 10 }}
           horizontal
         />
       </View>

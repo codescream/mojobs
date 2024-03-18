@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
     fontFamily: FONT.regular,
     color: "#B3AEC6",
     marginTop: SIZES.small / 1.5,
+    maxWidth: '70%',
   },
   infoContainer: {
     marginTop: SIZES.large,
