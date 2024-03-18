@@ -17,6 +17,7 @@ const jobTypes = ["Full-time", "Part-time", "Contractor"];
 const Welcome = () => {
   const router = useRouter();
   const [activeJobType, setActiveJobType] = useState('Full-time');
+  const [search, setSearch] = useState("");
 
   return (
     <View>
@@ -31,10 +32,10 @@ const Welcome = () => {
 
       <View style={styles.searchContainer}>
         <View style={styles.searchWrapper}>
-          <TextInput placeholder="what are you looking for?"
+          <TextInput placeholder="what job are you looking for?"
             style={styles.searchInput}
-            onChange={() => {}}
-            value=''
+            onChange={(e) => {setSearch(e.target.value)}}
+            value={search}
           />
         </View>
         <TouchableOpacity
@@ -59,9 +60,14 @@ const Welcome = () => {
                 router.push(`/search/${item}`);
               }}
             >
-              <Text>{item}</Text>
+              <Text
+                style={styles.tabText(activeJobType, item)}
+              >{item}</Text>
             </TouchableOpacity>
           )}
+          keyExtractor={item => item}
+          contentContainerStyle={{ columnGap: SIZES.small, alignItems: 'center' }}
+          horizontal
         />
       </View>
     </View>

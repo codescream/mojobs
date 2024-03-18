@@ -1,7 +1,9 @@
-import React from 'react'
-import { View, Text } from 'react-native'
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, FlatList, ActivityIndicator } from 'react-native';
+import { useRouter } from 'expo-router';
 
-import styles from './popularjobs.style'
+import styles from './popularjobs.style';
+import { COLORS, SIZES } from '../../../constants';
 
 const Popularjobs = () => {
   return (
