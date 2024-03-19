@@ -9,12 +9,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   logoBox: {
-    width: 80,
-    height: 80,
+    width: 120,
+    height: 120,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#FFF",
     borderRadius: SIZES.large,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4
   },
   logoImage: {
     width: "80%",
