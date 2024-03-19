@@ -8,6 +8,7 @@ import PopularJobCard from '../../common/cards/popular/PopularJobCard';
 import { useFetch } from '../../../hook/useFetch';
 
 const Popularjobs = () => {
+  const [selectedJob, setSelectedJob] = useState(null)
   const router = useRouter();
   
   const { data, isLoading, error } = useFetch('search', {
@@ -15,11 +16,8 @@ const Popularjobs = () => {
     num_pages: 1,
   });
 
-  console.log(data);
-  console.log(error);
-
   const renderItem = ({item}) => {
-    return <PopularJobCard item={item} />
+    return <PopularJobCard item={item} selectedJob={selectedJob?.job_id} handleCardPress={() => setSelectedJob(item)} />
   };
 
   return (
@@ -29,7 +27,7 @@ const Popularjobs = () => {
       <View
         style={styles.header}
       >
-        <Text style={styles.headerTitle}>Popularjobs</Text>
+        <Text style={styles.headerTitle}>Popular Jobs</Text>
           <TouchableOpacity
             style={{
               borderRadius: 10,

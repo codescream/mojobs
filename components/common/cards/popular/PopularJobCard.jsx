@@ -8,7 +8,7 @@ const PopularJobCard = ({ item, selectedJob, handleCardPress }) => {
   return (
     <TouchableOpacity
       style={styles.container(selectedJob, item)}
-      onPress={() => {}}
+      onPress={() => handleCardPress()}
     >
       <View
         style={{ flexDirection: 'row', alignItems: 'center', columnGap: 10 }}
