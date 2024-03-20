@@ -20,12 +20,26 @@ const styles = StyleSheet.create({
     loaderContainer: {
         marginTop: SIZES.medium
     },
+    // footerContainer: {
+    //     marginTop: SIZES.small,
+    //     justifyContent: 'center',
+    //     alignItems: 'center',
+    //     flexDirection: 'row',
+    //     gap: 10
+    // },
     footerContainer: {
-        marginTop: SIZES.small,
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: 'row',
-        gap: 10
+        position: "absolute",
+        bottom: 0,
+        left: 0,
+        right: 0,
+        marginTop: 200,
+        padding: SIZES.small,
+        backgroundColor: "#FFF",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "row",
+        paddingVertical: 30,
+        columnGap: 20
     },
     paginationButton: {
         width: 30,

@@ -13,7 +13,7 @@ const Nearbyjobs = () => {
     num_pages: 1,
   });
 
-  console.log(data);
+  // console.log(data);
 
   return (
     <View
