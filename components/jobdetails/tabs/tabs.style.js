@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   btnText: (name, activeTab) => ({
     fontFamily: "DMMedium",
     fontSize: SIZES.small,
-    fontWeight: name === activeTab && "bold",
+    fontWeight: name === activeTab ? "bold" : "normal",
     color: name === activeTab ? COLORS.secondary : "#AAA9B8",
   }),
 });
