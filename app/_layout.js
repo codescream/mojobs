@@ -20,8 +20,6 @@ const Layout = () => {
   
   if(!loaded) return null;
 
-  console.log(loaded);
-
   return <Stack onLayout={onLayoutRootView} />;
 }
 

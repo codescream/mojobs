@@ -18,8 +18,6 @@ const SearchJob = () => {
   const jobType = params.values[1] ?? "";
   const searchTerm = params.values[0];
 
-  console.log(jobType, searchTerm);
-
   const router = useRouter();
 
   const handlePagination = (direction) => {
@@ -31,13 +29,6 @@ const SearchJob = () => {
       handleSearch();
     }
   }
-
-  // const { data, isLoading, error } = useFetch('search', {
-  //   query: searchTerm,
-  //   page: page,
-  // });
-
-  console.log(data);
 
   const handleSearch = async () => {
     const options = {

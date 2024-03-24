@@ -7,9 +7,8 @@ import { COLORS, SIZES } from '../../../constants';
 import PopularJobCard from '../../common/cards/popular/PopularJobCard';
 import { useFetch } from '../../../hook/useFetch';
 
-const Popularjobs = () => {
-  const [selectedJob, setSelectedJob] = useState(null)
-  const router = useRouter();
+const Popularjobs = ({ onOff, job }) => {
+  const [selectedJob, setSelectedJob] = useState(null);
   
   const { data, isLoading, error } = useFetch('search', {
     query: 'React developer',
@@ -17,7 +16,7 @@ const Popularjobs = () => {
   });
 
   const renderItem = ({item}) => {
-    return <PopularJobCard item={item} selectedJob={selectedJob?.job_id} handleCardPress={() => setSelectedJob(item)} />
+    return <PopularJobCard item={item} selectedJob={selectedJob?.job_id} handleCardPress={() => {setSelectedJob(item); onOff(true); job(item)}} />
   };
 
   return (
