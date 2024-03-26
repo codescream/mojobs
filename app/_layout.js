@@ -17,6 +17,8 @@ const Layout = () => {
       await SplashScreen.hideAsync();
     }
   }, [loaded]);
+
+  console.log("loaded:", loaded);
   
   if(!loaded) return null;
 

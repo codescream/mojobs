@@ -9,6 +9,7 @@ import location from "../assets/icons/location.png";
 import chevronLeft from '../assets/icons/chevron-left.png'
 import chevronRight from '../assets/icons/chevron-right.png'
 import closeBtn from '../assets/icons/close.png';
+import dropDownBtn from '../assets/icons/drop-down-arrow.png';
 
 export default {
   heart,
@@ -22,4 +23,5 @@ export default {
   chevronLeft,
   chevronRight,
   closeBtn,
+  dropDownBtn,
 };

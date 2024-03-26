@@ -1,10 +1,10 @@
-import { View, Text, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { View, Text, TouchableOpacity, ActivityIndicator, Image } from 'react-native';
 import { useRouter } from 'expo-router';
 
 import styles from './nearbyjobs.style'
 import NearbyJobCard from '../../common/cards/nearby/NearbyJobCard';
 import { useFetch } from '../../../hook/useFetch';
-import { COLORS, SIZES } from '../../../constants';
+import { COLORS, SIZES, icons } from '../../../constants';
 
 const Nearbyjobs = () => {
   const router = useRouter();
@@ -27,10 +27,23 @@ const Nearbyjobs = () => {
               backgroundColor: COLORS.tertiary,
               paddingVertical: 10,
               paddingHorizontal: 20,
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
+              columnGap: 5,
             }}
             onPress={() => {}}
           >
             <Text style={styles.headerBtn}>Show All</Text>
+            <Image 
+              source={icons.dropDownBtn}
+              resizeMode='contain'
+              style={{
+                width: 10,
+                height: 10,
+              }}
+            />
           </TouchableOpacity>
       </View>
       <View
