@@ -19,9 +19,18 @@ const jobDetails = () => {
     job_id: params.id
   });
 
-  const onRefresh = () => {
-    refetch();
-  }
+  const onRefresh = useCallback(() => {
+      setRefreshing(false);
+      refetch();
+      setRefreshing(true);
+  },[]);
+  
+
+  // const onRefresh = () => {
+  //   setRefreshing(false);
+  //   refetch();
+  //   setRefreshing(true);
+  // }
 
   const displayTabContent = () => {
     switch(activeTab) {

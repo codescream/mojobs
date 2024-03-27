@@ -13,7 +13,7 @@ export const useFetch = (endpoint, query) => {
      ...query 
     },
     headers: {
-      'X-RapidAPI-Key': process.env.RAPID_API_KEY,
+      'X-RapidAPI-Key': `${process.env.RAPID_API_KEY}`,
       'X-RapidAPI-Host': 'jsearch.p.rapidapi.com'
     }
   };
