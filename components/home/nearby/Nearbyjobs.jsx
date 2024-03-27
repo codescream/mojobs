@@ -5,13 +5,18 @@ import styles from './nearbyjobs.style'
 import NearbyJobCard from '../../common/cards/nearby/NearbyJobCard';
 import { useFetch } from '../../../hook/useFetch';
 import { COLORS, SIZES, icons } from '../../../constants';
+import { useEffect } from 'react';
 
-const Nearbyjobs = () => {
+const Nearbyjobs = ({ rerender, setRerender }) => {
   const router = useRouter();
-  const { data, isLoading, error } = useFetch('search', {
+  const { data, isLoading, error, refetch} = useFetch('search', {
     query: 'React developer',
     num_pages: 1,
   });
+
+  useEffect(() => {
+    refetch();
+  }, [rerender])
 
   return (
     <View

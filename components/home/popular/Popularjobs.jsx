@@ -119,21 +119,27 @@ const PopularJobContent = ({ job, animateViewDown }) => {
   </>)
 }
 
-const Popularjobs = ({ onOff, job, setAnimateContent, animateViewDown, setAnimateHeight }) => {
+const Popularjobs = ({ onOff, job, setAnimateContent, animateViewDown, setAnimateHeight, rerender, setRerender }) => {
   const [selectedJob, setSelectedJob] = useState(null);
   const [jobCategory, setJobCategory] = useState('Show All');
+  const [refresh, setRefresh] = useState(false);
   
   
   const { data, isLoading, error, refetch } = useFetch('search', {
     query: 'React developer',
     num_pages: 1,
     employment_types: jobCategory === "Show All" ? jobTypes.slice(0, 3).join(",") : jobCategory
-  });  
+  }); 
 
   useEffect(() => {
+    if(rerender) {
+      setRefresh(rerender);
+      setJobCategory("Show All");
+    }
     refetch();
+    setRerender(false);
   
-  }, [jobCategory])
+  }, [jobCategory, rerender])
   
 
   const renderItem = ({item}) => {

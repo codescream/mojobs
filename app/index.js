@@ -1,18 +1,19 @@
-import React, {useEffect, useState} from 'react';
-import { Text, View, ScrollView, SafeAreaView, Modal, TouchableOpacity, Image, Pressable } from 'react-native';
+import React, {useCallback, useEffect, useState} from 'react';
+import { Text, View, ScrollView, SafeAreaView, Modal, TouchableOpacity, Image, Pressable, RefreshControl } from 'react-native';
 import { Stack, useRouter } from 'expo-router';
 import Animated, { useSharedValue, withSpring } from 'react-native-reanimated';
 
-import { COLORS, FONT, icons, images, SIZES } from '../constants';
+import { COLORS, icons, images, SIZES } from '../constants';
 import { Nearbyjobs, Popularjobs, ScreenHeaderBtn, Welcome } from '../components';
-import { checkImageURL } from '../utils';
 
 
 const Home = () => {
   const [showQuickView, setShowQuickView] = useState(false);
   const [selectedJob, setSelectedJob] = useState(null);
   const [animateContent, setAnimateContent] = useState(<></>);
-  const [animateHeight, setAnimateHeight] = useState(0)
+  const [animateHeight, setAnimateHeight] = useState(0);
+  const [refreshing, setRefreshing] = useState(false);
+  const [rerender, setRerender] = useState(false);
   const translateY = useSharedValue(1000);
   const router = useRouter();
 
@@ -28,6 +29,14 @@ const Home = () => {
       animateViewUp();
     }
   }, [showQuickView, selectedJob]);
+
+  const onRefresh = () => {
+      setRefreshing(true);
+      setRerender(prevRender => !prevRender);
+      setRefreshing(false);
+      // setRerender(false);
+  };
+  
 
   const animateViewDown = () => {
     translateY.value = withSpring(translateY.value + 1000);
@@ -51,6 +60,12 @@ const Home = () => {
       />
       <ScrollView
         showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl 
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+          />
+        }
       >
         <View
           style={{
@@ -59,8 +74,8 @@ const Home = () => {
           }}
         >
           <Welcome />
-          <Popularjobs onOff={setShowQuickView} job={setSelectedJob} setAnimateContent={setAnimateContent} animateViewDown={animateViewDown} setAnimateHeight={setAnimateHeight} />
-          <Nearbyjobs />
+          <Popularjobs onOff={setShowQuickView} job={setSelectedJob} setAnimateContent={setAnimateContent} animateViewDown={animateViewDown} setAnimateHeight={setAnimateHeight} rerender={rerender} setRerender={setRerender} />
+          <Nearbyjobs rerender={rerender} setRerender={setRerender} />
 
           {
             showQuickView && (
